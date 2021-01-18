@@ -1,0 +1,85 @@
+<MyMovieDB>:
+    Background:
+    MDLabel:
+        text: "My Movie Database"
+        pos_hint: {"center_x": 0.83, "center_y": 0.9}
+        font_size: "40dp"
+    FloatLayout:
+        MDCard:
+            size_hint: [0.7, 0.5]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                size_hint: [0.3, 1]
+            BoxLayout:
+                orientation: "vertical"
+                spacing: "20dp"
+                MDTextField:
+                    id: movie_series
+                    pos_hint: {"center_y": 0.3}
+                    required: True
+                    helper_text: "Please insert movie title"
+                    helper_text_mode: "on_error"
+                    hint_text: "Movie/Series Title"
+                    mode: "rectangle"
+                MDTextField:
+                    id: rating
+                    pos_hint: {"center_y": 0.6}
+                    required: True
+                    helper_text: "Rate Movie 0-9"
+                    input_filter: "int"
+                    max_text_length: 1
+                    helper_text_mode: "on_error"
+                    hint_text: "Rating"
+                    mode: "rectangle"
+                MDTextField:
+                    id: genre
+                    pos_hint: {"center_y": 0.3}
+                    hint_text: "Genre"
+                    mode: "rectangle"
+                BoxLayout:
+                    spacing: "60dp"
+                    orientation: "horizontal"
+                    MDFillRoundFlatButton:
+                        pos_hint: {"center_x": 0.2}
+                        text: "Save Movie"
+                        on_release: root.save_movie()
+                    MDFillRoundFlatButton:
+                        pos_hint: {"center_x": 0.2}
+                        text: "Save Series"
+                        on_release: root.save_series()
+
+                BoxLayout:
+                    padding: [0, 0, 0, 10]
+                    MDRectangleFlatButton:
+                        id: init_db
+                        text: "Init Database"
+                        on_release: root.init_db()
+            BoxLayout:
+                padding: [20, 20, 20, 20]
+                MDLabel:
+                    text: "Genres is separated by one space"
+        MDCard:
+            id: help_card
+            size_hint: [1, 0.3]
+            pos_hint: {"center_y": -0.3}
+            padding: [20, 20, 20, 20]
+            orientation: "vertical"
+            MDLabel:
+                text: "If this is the first time running the program. Start by pressing 'init database'"
+            MDLabel:
+                text: "Rating can be 0-9, where 0 is worst and 9 is best."
+            MDLabel:
+                text: ""
+    BoxLayout:
+        MDFloatingActionButton:
+            icon: "help"
+            on_release: root.help()
+
+
+<Background@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: (0, 0.4, 0.9, 0.8)
+        Rectangle:
+            size: self.size
+            pos: self.pos
