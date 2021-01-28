@@ -2,11 +2,11 @@
 A frontend program for saving movies and series to SQLite DB
 
 
-Requires:
-python 3 (3.9)
-kivy
-kivymd
+<b>Requirements</b>
+
+<code>$ pip install -r requirements.txt</code>
 
 
-How to run:
-$ python main.py
+<b>How to run:</b>
+
+<code>$ python main.py</code>
